@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
 void countCharacters(char *string, int *character_count, int *space_count)
@@ -14,13 +13,13 @@ void countCharacters(char *string, int *character_count, int *space_count)
 
 int main()
 {
-    char *string = (char *) malloc(sizeof(char) * 1024);
+    char string[10000];
     char include_spaces;
     int character_count = 0;
     int space_count = 0;
 
     printf("Enter String: ");
-    fgets(string, 1024, stdin);
+    fgets(string, 10000, stdin);
     countCharacters(string, &character_count, &space_count);
     printf("Do you want to include space count? (Y/N): ");
     scanf("%c", &include_spaces);
@@ -30,7 +29,7 @@ int main()
         case 'y':
         case 'Y':
             character_count += space_count;
-            
+
             break;
 
         case 'n':
@@ -42,7 +41,6 @@ int main()
     }
 
     printf("Total Character Count: %d\n", character_count);
-    free(string);
 
     return 0;
 }
